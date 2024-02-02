@@ -15,24 +15,23 @@ struct Node {
     Node(int value) : data(value), left(nullptr), right(nullptr), next(nullptr) {}
 };
 
-// Binary Search Tree class
+
+
 class BST {
 private:
     Node* root;
 
-    // Function to print the BST using 2D representation
+    // Print the BST using 2D representation
     void print2D(Node* root, int space, ostream& out) {
-        // Base case
         if (root == nullptr)
             return;
 
-        // Increase distance between levels
+        // Increase distance between levels of BST
         space += COUNT;
 
-        // Process right child first
         print2D(root->right, space, out);
 
-        // Print current node after space count
+        // Print current node after space count is correct
         out << endl;
         for (int i = COUNT; i < space; i++)
             out << " ";
@@ -46,11 +45,10 @@ private:
             out << root->data << "\n";
         }
 
-        // Process left child
         print2D(root->left, space, out);
     }
 
-    // Function to count the number of twins in a twin chain
+    // Counts the number of twins in a twin chain
     int countTwins(Node* node) {
         int count = 0;
         while (node != nullptr) {
@@ -63,13 +61,13 @@ private:
 public:
     BST() : root(nullptr) {}
 
-    // Function to insert a new node into the BST
+    // Inserts a new node into the BST
     void insert(int value) {
         root = insertRecursive(root, value);
         cout << "Inserted value: " << value << ", Tree Height: " << height(root) << endl;
     }
 
-    // Function to perform recursive insertion
+    // Recursive insertion
     Node* insertRecursive(Node* current, int value) {
         if (current == nullptr) {
             return new Node(value);
@@ -82,7 +80,7 @@ public:
             current->right = insertRecursive(current->right, value);
         }
         else {
-            // Handle duplicates using twin chaining
+            // Twin chaining handling
             Node* newNode = new Node(value);
             newNode->next = current->next;
             current->next = newNode;
@@ -91,7 +89,7 @@ public:
         return current;
     }
 
-    // Function to calculate the height of the tree
+    // Calculates the height of the tree
     int height(Node* node) {
         if (node == nullptr) {
             return 0;
@@ -104,7 +102,7 @@ public:
         }
     }
 
-    // Function to print the BST to a file and the console
+    // Prints the BST to a file and the console
     void printTree(ofstream& outputFile) {
         cout << "BST elements: ";
         printTreeRecursive(root);
@@ -115,7 +113,7 @@ public:
         outputFile << ", Tree Height: " << height(root) << endl;
     }
 
-    // Function to perform recursive inorder traversal
+    // Printing with inorder traversal
     void printTreeRecursive(Node* current) {
         if (current != nullptr) {
             printTreeRecursive(current->left);
@@ -124,7 +122,7 @@ public:
         }
     }
 
-    // Function to print twin chain (for duplicates)
+    // Printing twin chain duplicates
     void printTwinChain(Node* node) {
         while (node != nullptr) {
             cout << node->data << " ";
@@ -132,7 +130,7 @@ public:
         }
     }
 
-    // Function to perform recursive inorder traversal and print to file
+    // Inorder traversal to print to file
     void printTreeRecursiveToFile(Node* current, ofstream& outputFile) {
         if (current != nullptr) {
             printTreeRecursiveToFile(current->left, outputFile);
@@ -141,7 +139,7 @@ public:
         }
     }
 
-    // Function to print twin chain to file (for duplicates)
+    // Prints twin chain values to file
     void printTwinChainToFile(Node* node, ofstream& outputFile) {
         while (node != nullptr) {
             outputFile << node->data << " ";
@@ -149,13 +147,13 @@ public:
         }
     }
 
-    // Function to print the BST using 2D representation to the console
+    // Prints the BST using 2D representation to the console
     void print2DConsole() {
         cout << "Printing BST using 2D representation:" << endl;
         print2D(root, 0, cout);
     }
 
-    // Function to print the BST using 2D representation to a specified output stream
+    // Prints the BST using 2D representation to a specified output stream
     void print2DToFile(ofstream& outputFile) {
         outputFile << "Printing BST using 2D representation:" << endl;
         print2D(root, 0, outputFile);
@@ -166,7 +164,7 @@ public:
 
 
 
-// Function to check if a string represents a valid integer
+// Checks if a string represents a valid integer
 bool isValidInteger(const string str) {
     try {
         // Attempt to convert the string to an integer
@@ -182,18 +180,17 @@ bool isValidInteger(const string str) {
 }
 
 int main() {
-    // Get input and output file names from the user
+
     string inputFileName, operationFileName, outputFileName;
 
     cout << "Enter the name of the input file: ";
     cin >> inputFileName;
 
-    //Operation File cout and cin
+    //Operation File cout and cin to be coded------------------------------
 
     cout << "Enter the name of the output file: ";
     cin >> outputFileName;
 
-    // Open the input file
     ifstream inputFile(inputFileName);
 
     if (!inputFile) {
@@ -201,7 +198,7 @@ int main() {
         return 1;
     }
 
-    // Open the output file
+
     ofstream outputFile(outputFileName);
 
     if (!outputFile) {
@@ -210,15 +207,15 @@ int main() {
         return 1;
     }
 
-    // Create a BST object
+
     BST bst;
 
     int value;
     string line;
 
-    // Read lines from the input file
+
     while (getline(inputFile, line)) {
-        // Check if the line represents a valid integer
+        
         if (isValidInteger(line)) {
             // Convert the string to an integer and insert into the BST
             value = stoi(line);
@@ -230,12 +227,11 @@ int main() {
             bst.print2DToFile(outputFile);
         }
         else {
-            // Print an error message for invalid integer
             cerr << "Error: Invalid integer - skipping line: " << line << endl;
         }
     }
 
-    // Check if the operation file is empty and valid and perform operations
+    // Check if the operation file is empty and valid and perform operations to be coded-------------------------------------
     
     // Close the files
     inputFile.close();
