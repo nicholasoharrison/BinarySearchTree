@@ -23,6 +23,11 @@ bool isValidInteger(const string str) {
 
 int main() {
 
+    int creation = 0;
+    int search = 0;
+    int deletion = 0;
+    int insert = 0;
+
     string inputFileName, operationFileName, outputFileName;
 
     cout << "Enter the name of the input file: ";
@@ -62,7 +67,7 @@ int main() {
             // Convert the string to an integer and insert into the BST
             value = stoi(line);
             bst.insert(value);
-
+            creation++;
             // Print the BST to the console and the output file after each insertion
             bst.printTree(outputFile);
             bst.print2DConsole();
@@ -75,6 +80,26 @@ int main() {
 
     // Check if the operation file is empty and valid and perform operations to be coded-------------------------------------
     
+
+    cout << "\n              BST";
+    cout << "\nCreation      "<< creation;
+    cout << "\nSearch        " << search;
+    cout << "\nInsert        " << insert;
+    cout << "\nDelete        " << deletion;
+    cout << "\n         -------------";
+    cout << "\nTotal         " << (creation+search+insert+deletion);
+
+
+
+    outputFile << "\n              BST";
+    outputFile << "\nCreation      " << creation;
+    outputFile << "\nSearch        " << search;
+    outputFile << "\nInsert        " << insert;
+    outputFile << "\nDelete        " << deletion;
+    outputFile << "\n         -------------";
+    outputFile << "\nTotal         " << (creation + search + insert + deletion);
+
+
     // Close the files
     inputFile.close();
     outputFile.close();

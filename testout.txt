@@ -168,3 +168,11 @@ Printing BST using 2D representation:
           0
 
                -1
+
+              BST
+Creation      12
+Search        0
+Insert        0
+Delete        0
+         -------------
+Total      12
