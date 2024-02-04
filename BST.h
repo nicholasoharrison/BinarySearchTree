@@ -38,11 +38,26 @@ public:
     // Inserts a new node into the BST
    void insert(int value);
 
+   // Delete node with specific value from BST
+   void deleteNode(int value);
+
+   // Recursive deletion function
+   Node* deleteNodeRecursive(Node* current, int value);
+   
+    // Finds the smallest node in a specified subtree
+    Node* minValueNode(Node* node);
+
     // Recursive insertion
     Node* insertRecursive(Node* current, int value);
 
     // Calculates the height of the tree
     int height(Node* node);
+
+    // Searches for specific value in the tree
+    bool search(int value);
+
+    // Perform recursive search
+    bool searchRecursive(Node* current, int value);
 
     // Prints the BST to a file and the console
     void printTree(ofstream& outputFile);

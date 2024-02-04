@@ -32,6 +32,8 @@
         print2D(root->left, space, out);
     }
 
+
+
     // Counts the number of twins in a twin chain
     int BST::countTwins(Node* node) {
         int count = 0;
@@ -44,11 +46,86 @@
 
 
 
+    // Deletes node from BST
+    void BST::deleteNode(int value) {
+        if (root == nullptr) {
+            cout << "Tree is empty. Cannot delete value: " << value << endl;
+            return;
+        }
+
+        root = deleteNodeRecursive(root, value);
+        cout << "Deleted value: " << value << ", Tree Height: " << height(root) << endl;
+    }
+
+
+
+    // Recursive delete function
+    Node* BST::deleteNodeRecursive(Node* current, int value) {
+        if (current == nullptr) {
+            return current;
+        }
+
+        if (value < current->data) {
+            current->left = deleteNodeRecursive(current->left, value);
+        }
+        else if (value > current->data) {
+            current->right = deleteNodeRecursive(current->right, value);
+        }
+        else {
+            // Handle twin chaining
+            if (current->next != nullptr) {
+                // Subtract one from the twin chain
+                Node* temp = current->next;
+                current->next = temp->next;
+                delete temp;
+            }
+            else {
+                // If not a twin chain, perform regular deletion
+                if (current->left == nullptr) {
+                    Node* temp = current->right;
+                    delete current;
+                    return temp;
+                }
+                else if (current->right == nullptr) {
+                    Node* temp = current->left;
+                    delete current;
+                    return temp;
+                }
+
+                // Node with two children, get the inorder successor
+                Node* temp = minValueNode(current->right);
+
+                // Copy the inorder successor's data to this node
+                current->data = temp->data;
+
+                // Delete the inorder successor
+                current->right = deleteNodeRecursive(current->right, temp->data);
+            }
+        }
+
+        return current;
+    }
+
+
+
     // Inserts a new node into the BST
     void BST::insert(int value) {
         root = insertRecursive(root, value);
         cout << "Inserted value: " << value << ", Tree Height: " << height(root) << endl;
     }
+
+
+
+    // Finds node of minimum value in any specified subtree
+    Node* BST::minValueNode(Node* node) {
+        Node* current = node;
+        while (current && current->left != nullptr) {
+            current = current->left;
+        }
+        return current;
+    }
+
+
 
     // Recursive insertion
     Node* BST::insertRecursive(Node* current, int value) {
@@ -72,6 +149,8 @@
         return current;
     }
 
+
+
     // Calculates the height of the tree
     int BST::height(Node* node) {
         if (node == nullptr) {
@@ -85,6 +164,34 @@
         }
     }
 
+
+
+    // Searches for value in the tree
+    bool BST::search(int value) {
+        return searchRecursive(root, value);
+    }
+
+
+
+    // Recursive seach function
+    bool BST::searchRecursive(Node* current, int value) {
+        while (current != nullptr) {
+            if (value == current->data) {
+                return true;
+            }
+            else if (value < current->data) {
+                current = current->left;
+            }
+            else {
+                current = current->right;
+            }
+        }
+
+        return false;
+    }
+
+
+
     // Prints the BST to a file and the console
     void BST::printTree(ofstream& outputFile) {
         cout << "BST elements: ";
@@ -96,6 +203,8 @@
         outputFile << ", Tree Height: " << height(root) << endl;
     }
 
+
+
     // Printing with inorder traversal
     void BST::printTreeRecursive(Node* current) {
         if (current != nullptr) {
@@ -105,6 +214,8 @@
         }
     }
 
+
+
     // Printing twin chain duplicates
     void BST::printTwinChain(Node* node) {
         while (node != nullptr) {
@@ -112,6 +223,8 @@
             node = node->next;
         }
     }
+
+
 
     // Inorder traversal to print to file
     void BST::printTreeRecursiveToFile(Node* current, ofstream& outputFile) {
@@ -122,6 +235,8 @@
         }
     }
 
+
+
     // Prints twin chain values to file
     void BST::printTwinChainToFile(Node* node, ofstream& outputFile) {
         while (node != nullptr) {
@@ -130,11 +245,15 @@
         }
     }
 
+
+
     // Prints the BST using 2D representation to the console
     void BST::print2DConsole() {
         cout << "Printing BST using 2D representation:" << endl;
         print2D(root, 0, cout);
     }
+
+
 
     // Prints the BST using 2D representation to a specified output stream
     void BST::print2DToFile(ofstream& outputFile) {

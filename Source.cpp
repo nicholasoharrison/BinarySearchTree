@@ -33,7 +33,8 @@ int main() {
     cout << "Enter the name of the input file: ";
     cin >> inputFileName;
 
-    //Operation File cout and cin to be coded------------------------------
+    cout << "Enter the name of the operation file: ";
+    cin >> operationFileName;
 
     cout << "Enter the name of the output file: ";
     cin >> outputFileName;
@@ -78,9 +79,96 @@ int main() {
         }
     }
 
-    // Check if the operation file is empty and valid and perform operations to be coded-------------------------------------
-    
+    //IMPLEMENT INSERT, DELETE, AND SEARCH COUNTERS
 
+    //FIX INSERT AND DELETE OPERATIONS SIMILAR TO SEARCH
+
+    // Check if the operation file is empty and valid and perform operations
+    ifstream operationFile(operationFileName);
+    if (operationFile.peek() == ifstream::traits_type::eof()) {
+        cout << "Empty Operation File – No Operations Performed" << endl;
+    }
+    else {
+        // Perform operations from the operation file
+        while (getline(operationFile, line)) {
+            char actionCode;
+            int numOperations;
+            
+
+            istringstream iss(line);
+            if (iss >> actionCode >> numOperations) {
+                switch (actionCode) {
+                case 'I':
+                    for (int i = 0; i < numOperations; ++i) {
+                        // Read the integer to insert
+                        getline(operationFile, line);
+                        if (isValidInteger(line)) {
+                            value = stoi(line);
+                            
+                            // Insert the value into the BST
+                            bst.insert(value);
+                            // Print the BST to the console and the output file after each insertion
+                            bst.printTree(outputFile);
+                            bst.print2DConsole();
+                            bst.print2DToFile(outputFile);
+                        }
+                        else {
+                            cerr << "Error: Invalid integer for insertion - skipping line: " << line << endl;
+                        }
+                    }
+                    break;
+
+                case 'D':
+                    for (int i = 0; i < numOperations; ++i) {
+                        // Read the integer to delete
+                        getline(operationFile, line);
+                        if (isValidInteger(line)) {
+                            value = stoi(line);
+                            // Check if the value is in the tree before attempting deletion
+                            if (bst.search(value)) {
+                                // Delete the value from the BST
+                                bst.deleteNode(value);
+                                // Print the BST to the console and the output file after each deletion
+                                bst.printTree(outputFile);
+                                bst.print2DConsole();
+                                bst.print2DToFile(outputFile);
+                            }
+                            else {
+                                cout << "Value " << value << " not found in the tree - skipping deletion." << endl;
+                            }
+                        }
+                        else {
+                            cerr << "Error: Invalid integer for deletion - skipping line: " << line << endl;
+                        }
+                    }
+                    break;
+
+                case 'S':
+                    
+                            value = numOperations;
+                            // Search for the value in the BST
+                            if (bst.search(value)) {
+                                cout << "Value " << value << " found in the tree." << endl;
+                            }
+                            else {
+                                cout << "Value " << value << " not found in the tree." << endl;
+                            }
+                       
+                    break;
+
+                default:
+                    cerr << "Error: Invalid Action Code - skipping line: " << line << endl;
+                    break;
+                }
+            }
+            else {
+                cerr << "Error: Invalid format for operation - skipping line: " << line << endl;
+            }
+        }
+    }
+
+
+    // Print analysis data
     cout << "\n              BST";
     cout << "\nCreation      "<< creation;
     cout << "\nSearch        " << search;
@@ -103,7 +191,7 @@ int main() {
     // Close the files
     inputFile.close();
     outputFile.close();
-    //Close operation file
+    operationFile.close();
 
     return 0;
 }
