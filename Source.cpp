@@ -6,7 +6,7 @@
 using namespace std;
 
 
-// Checks if a string represents a valid integer
+// Function to check if a string represents a valid integer
 bool isValidInteger(const string str) {
     try {
         // Attempt to convert the string to an integer
@@ -28,13 +28,13 @@ int main() {
 
     string inputFileName, operationFileName, outputFileName;
 
-    cout << "Enter the name of the input file: ";
+    std::cout << "Enter the name of the input file: ";
     cin >> inputFileName;
 
-    cout << "Enter the name of the operation file: ";
+    std::cout << "Enter the name of the operation file: ";
     cin >> operationFileName;
 
-    cout << "Enter the name of the output file: ";
+    std::cout << "Enter the name of the output file: ";
     cin >> outputFileName;
 
     ifstream inputFile(inputFileName);
@@ -59,7 +59,7 @@ int main() {
     int value;
     string line;
 
-    cout << "\n\n\n";
+    std::cout << "\n\n\n";
 
 
 
@@ -80,15 +80,15 @@ int main() {
         }
     }
 
-    cout <<"\nCreation of BST complete "<< operationAmounts[0] << " operations completed" << endl;
-    cout << "\n\n\n";
+    std::cout <<"\nCreation of BST complete "<< operationAmounts[0] << " operations completed" << endl;
+    std::cout << "\n\n\n";
 
   
 
     // Check if the operation file is empty and valid and perform operations
     ifstream operationFile(operationFileName);
     if (operationFile.peek() == ifstream::traits_type::eof()) {
-        cout << "Empty Operation File - No Operations Performed" << endl;
+        std::cout << "Empty Operation File - No Operations Performed" << endl;
     }
     else {
         // Perform operations from the operation file
@@ -98,7 +98,8 @@ int main() {
             
 
             istringstream iss(line);
-            if (iss >> actionCode >> numOperations) {
+            // Checks if each line is in the correct format then proceeds with the operations
+            if (iss >> actionCode >> numOperations) { 
                 switch (actionCode) {
                 case 'I':
                             
@@ -110,7 +111,7 @@ int main() {
                     bst.printTree(outputFile);
                     bst.print2DConsole();
                     bst.print2DToFile(outputFile);
-                    cout << bst.getNumOperations() << " operations completed" << endl;
+                    std::cout << bst.getNumOperations() << " operations completed" << endl;
 
                         
                     break;
@@ -127,10 +128,10 @@ int main() {
                         bst.printTree(outputFile);
                         bst.print2DConsole();
                         bst.print2DToFile(outputFile);
-                        cout << bst.getNumOperations() << " operations completed" << endl;
+                        std::cout << bst.getNumOperations() << " operations completed" << endl;
                     }
                     else {
-                        cout << "Value " << value << " not found in the tree - skipping deletion." << endl;
+                        std::cout << "Value " << value << " not found in the tree - skipping deletion." << endl;
                     }
                         
                     break;
@@ -140,12 +141,12 @@ int main() {
                     value = numOperations;
                     // Search for the value in the BST
                     if (bst.search(value)) {
-                        cout << "Value " << value << " found in the tree." << endl;
-                        cout << bst.getNumOperations() << " operations completed" << endl;
+                        std::cout << "Value " << value << " found in the tree." << endl;
+                        std::cout << bst.getNumOperations() << " operations completed" << endl;
                         operationAmounts[1]+=bst.getNumOperations();
                     }
                     else {
-                        cout << "Value " << value << " not found in the tree." << endl;
+                        std::cout << "Value " << value << " not found in the tree." << endl;
                     }
                        
                     break;
@@ -167,13 +168,13 @@ int main() {
     int insert = operationAmounts[3];
 
     // Print analysis data
-    cout << "\n              BST";
-    cout << "\nCreation      "<< creation;
-    cout << "\nSearch        " << search;
-    cout << "\nInsert        " << insert;
-    cout << "\nDelete        " << deletion;
-    cout << "\n         -------------";
-    cout << "\nTotal         " << (creation+search+insert+deletion);
+    std::cout << "\n              BST";
+    std::cout << "\nCreation      "<< creation;
+    std::cout << "\nSearch        " << search;
+    std::cout << "\nInsert        " << insert;
+    std::cout << "\nDelete        " << deletion;
+    std::cout << "\n         -------------";
+    std::cout << "\nTotal         " << (creation+search+insert+deletion);
 
 
 

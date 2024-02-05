@@ -49,12 +49,12 @@
     // Deletes node from BST
     void BST::deleteNode(int value) {
         if (root == nullptr) {
-            cout << "Tree is empty. Cannot delete value: " << value << endl;
+            std::cout << "Tree is empty. Cannot delete value: " << value << endl;
             return;
         }
         operations = 0;
         root = deleteNodeRecursive(root, value);
-        cout << "Deleted value: " << value << ", Tree Height: " << height(root) << endl;
+        std::cout << "Deleted value: " << value << ", Tree Height: " << height(root) << endl;
     }
 
 
@@ -113,7 +113,7 @@
     void BST::insert(int value) {
         operations = 0;
         root = insertRecursive(root, value);
-        cout << "Inserted value: " << value << ", Tree Height: " << height(root) << endl;
+        std::cout << "Inserted value: " << value << ", Tree Height: " << height(root) << endl;
     }
 
 
@@ -199,9 +199,9 @@
 
     // Prints the BST to a file and the console
     void BST::printTree(ofstream& outputFile) {
-        cout << "BST elements: ";
+        std::cout << "BST elements: ";
         printTreeRecursive(root);
-        cout << ", Tree Height: " << height(root) << endl;
+        std::cout << ", Tree Height: " << height(root) << endl;
 
         outputFile << "BST elements: ";
         printTreeRecursiveToFile(root, outputFile);
@@ -224,7 +224,7 @@
     // Printing twin chain duplicates
     void BST::printTwinChain(Node* node) {
         while (node != nullptr) {
-            cout << node->data << " ";
+            std::cout << node->data << " ";
             node = node->next;
         }
     }
@@ -254,8 +254,8 @@
 
     // Prints the BST using 2D representation to the console
     void BST::print2DConsole() {
-        cout << "Printing BST using 2D representation:" << endl;
-        print2D(root, 0, cout);
+        std::cout << "Printing BST using 2D representation:" << endl;
+        print2D(root, 0, std::cout);
     }
 
 
