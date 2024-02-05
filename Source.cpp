@@ -86,7 +86,7 @@ int main() {
     // Check if the operation file is empty and valid and perform operations
     ifstream operationFile(operationFileName);
     if (operationFile.peek() == ifstream::traits_type::eof()) {
-        cout << "Empty Operation File – No Operations Performed" << endl;
+        cout << "Empty Operation File - No Operations Performed" << endl;
     }
     else {
         // Perform operations from the operation file
@@ -99,11 +99,11 @@ int main() {
             if (iss >> actionCode >> numOperations) {
                 switch (actionCode) {
                 case 'I':
-                    for (int i = 0; i < numOperations; ++i) {
+                    //for (int i = 0; i < numOperations; ++i) {
                         // Read the integer to insert
-                        getline(operationFile, line);
-                        if (isValidInteger(line)) {
-                            value = stoi(line);
+                        //getline(operationFile, line);
+                        //if (isValidInteger(line)) {
+                            value = numOperations;
                             
                             // Insert the value into the BST
                             bst.insert(value);
@@ -111,19 +111,15 @@ int main() {
                             bst.printTree(outputFile);
                             bst.print2DConsole();
                             bst.print2DToFile(outputFile);
-                        }
-                        else {
-                            cerr << "Error: Invalid integer for insertion - skipping line: " << line << endl;
-                        }
-                    }
+                        //}
+                        //else {
+                        //    cerr << "Error: Invalid integer for insertion - skipping line: " << line << endl;
+                        //}
+                    //}
                     break;
 
                 case 'D':
-                    for (int i = 0; i < numOperations; ++i) {
-                        // Read the integer to delete
-                        getline(operationFile, line);
-                        if (isValidInteger(line)) {
-                            value = stoi(line);
+                            value = numOperations;
                             // Check if the value is in the tree before attempting deletion
                             if (bst.search(value)) {
                                 // Delete the value from the BST
@@ -136,11 +132,8 @@ int main() {
                             else {
                                 cout << "Value " << value << " not found in the tree - skipping deletion." << endl;
                             }
-                        }
-                        else {
-                            cerr << "Error: Invalid integer for deletion - skipping line: " << line << endl;
-                        }
-                    }
+                        
+                    
                     break;
 
                 case 'S':
