@@ -59,6 +59,9 @@ int main() {
     int value;
     string line;
 
+    cout << "\n\n\n";
+
+
 
     while (getline(inputFile, line)) {
         
@@ -76,6 +79,9 @@ int main() {
             cerr << "Error: Invalid integer - skipping line: " << line << endl;
         }
     }
+
+    cout <<"\nCreation of BST complete "<< operationAmounts[0] << " operations completed" << endl;
+    cout << "\n\n\n";
 
   
 
@@ -104,6 +110,7 @@ int main() {
                     bst.printTree(outputFile);
                     bst.print2DConsole();
                     bst.print2DToFile(outputFile);
+                    cout << bst.getNumOperations() << " operations completed" << endl;
 
                         
                     break;
@@ -120,6 +127,7 @@ int main() {
                         bst.printTree(outputFile);
                         bst.print2DConsole();
                         bst.print2DToFile(outputFile);
+                        cout << bst.getNumOperations() << " operations completed" << endl;
                     }
                     else {
                         cout << "Value " << value << " not found in the tree - skipping deletion." << endl;
@@ -133,6 +141,7 @@ int main() {
                     // Search for the value in the BST
                     if (bst.search(value)) {
                         cout << "Value " << value << " found in the tree." << endl;
+                        cout << bst.getNumOperations() << " operations completed" << endl;
                         operationAmounts[1]+=bst.getNumOperations();
                     }
                     else {
