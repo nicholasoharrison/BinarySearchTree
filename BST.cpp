@@ -52,7 +52,7 @@
             cout << "Tree is empty. Cannot delete value: " << value << endl;
             return;
         }
-
+        operations = 0;
         root = deleteNodeRecursive(root, value);
         cout << "Deleted value: " << value << ", Tree Height: " << height(root) << endl;
     }
@@ -61,6 +61,7 @@
 
     // Recursive delete function
     Node* BST::deleteNodeRecursive(Node* current, int value) {
+        operations++;
         if (current == nullptr) {
             return current;
         }
@@ -110,6 +111,7 @@
 
     // Inserts a new node into the BST
     void BST::insert(int value) {
+        operations = 0;
         root = insertRecursive(root, value);
         cout << "Inserted value: " << value << ", Tree Height: " << height(root) << endl;
     }
@@ -129,6 +131,7 @@
 
     // Recursive insertion
     Node* BST::insertRecursive(Node* current, int value) {
+        operations++;
         if (current == nullptr) {
             return new Node(value);
         }
@@ -168,14 +171,16 @@
 
     // Searches for value in the tree
     bool BST::search(int value) {
+        operations = 0;
         return searchRecursive(root, value);
     }
 
 
 
-    // Recursive seach function
+    // Iterative search function
     bool BST::searchRecursive(Node* current, int value) {
         while (current != nullptr) {
+            operations++;
             if (value == current->data) {
                 return true;
             }

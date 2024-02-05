@@ -20,6 +20,7 @@ struct Node {
 
 
 class BST {
+
 private:
     
     Node* root;
@@ -27,13 +28,15 @@ private:
     // Print the BST using 2D representation
     void print2D(Node* root, int space, ostream& out);
 
-      
+    int operations;
 
     // Counts the number of twins in a twin chain
     int countTwins(Node* node);
 
 public:
-    BST() : root(nullptr) {} //Constructor sets the root node to null
+    BST() : root(nullptr) { operations = 0; } //Constructor sets the root node to null
+
+    int getNumOperations() { return operations; }
 
     // Inserts a new node into the BST
    void insert(int value);
@@ -56,7 +59,7 @@ public:
     // Searches for specific value in the tree
     bool search(int value);
 
-    // Perform recursive search
+    // Perform iterative search
     bool searchRecursive(Node* current, int value);
 
     // Prints the BST to a file and the console

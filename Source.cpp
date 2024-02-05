@@ -23,10 +23,8 @@ bool isValidInteger(const string str) {
 
 int main() {
 
-    int creation = 0;
-    int search = 0;
-    int deletion = 0;
-    int insert = 0;
+    
+    int operationAmounts[4] = { 0, 0, 0, 0 };
 
     string inputFileName, operationFileName, outputFileName;
 
@@ -68,7 +66,7 @@ int main() {
             // Convert the string to an integer and insert into the BST
             value = stoi(line);
             bst.insert(value);
-            creation++;
+            operationAmounts[0] += bst.getNumOperations();
             // Print the BST to the console and the output file after each insertion
             bst.printTree(outputFile);
             bst.print2DConsole();
@@ -79,9 +77,7 @@ int main() {
         }
     }
 
-    //IMPLEMENT INSERT, DELETE, AND SEARCH COUNTERS
-
-    //FIX INSERT AND DELETE OPERATIONS SIMILAR TO SEARCH
+  
 
     // Check if the operation file is empty and valid and perform operations
     ifstream operationFile(operationFileName);
@@ -99,53 +95,49 @@ int main() {
             if (iss >> actionCode >> numOperations) {
                 switch (actionCode) {
                 case 'I':
-                    //for (int i = 0; i < numOperations; ++i) {
-                        // Read the integer to insert
-                        //getline(operationFile, line);
-                        //if (isValidInteger(line)) {
-                            value = numOperations;
                             
-                            // Insert the value into the BST
-                            bst.insert(value);
-                            // Print the BST to the console and the output file after each insertion
-                            bst.printTree(outputFile);
-                            bst.print2DConsole();
-                            bst.print2DToFile(outputFile);
-                        //}
-                        //else {
-                        //    cerr << "Error: Invalid integer for insertion - skipping line: " << line << endl;
-                        //}
-                    //}
+                    value = numOperations;
+                    // Insert value into BST
+                    bst.insert(value);
+                    operationAmounts[3]+=bst.getNumOperations();
+                    // Print the BST to the console and the output file after each insertion
+                    bst.printTree(outputFile);
+                    bst.print2DConsole();
+                    bst.print2DToFile(outputFile);
+
+                        
                     break;
 
                 case 'D':
-                            value = numOperations;
-                            // Check if the value is in the tree before attempting deletion
-                            if (bst.search(value)) {
-                                // Delete the value from the BST
-                                bst.deleteNode(value);
-                                // Print the BST to the console and the output file after each deletion
-                                bst.printTree(outputFile);
-                                bst.print2DConsole();
-                                bst.print2DToFile(outputFile);
-                            }
-                            else {
-                                cout << "Value " << value << " not found in the tree - skipping deletion." << endl;
-                            }
+                           
+                    value = numOperations;
+                    // Check if the value is in the tree before attempting deletion
+                    if (bst.search(value)) {
+                        // Delete the value from the BST
+                        bst.deleteNode(value);
+                        operationAmounts[2]+=bst.getNumOperations();
+                        // Print the BST to the console and the output file after each deletion
+                        bst.printTree(outputFile);
+                        bst.print2DConsole();
+                        bst.print2DToFile(outputFile);
+                    }
+                    else {
+                        cout << "Value " << value << " not found in the tree - skipping deletion." << endl;
+                    }
                         
-                    
                     break;
 
                 case 'S':
                     
-                            value = numOperations;
-                            // Search for the value in the BST
-                            if (bst.search(value)) {
-                                cout << "Value " << value << " found in the tree." << endl;
-                            }
-                            else {
-                                cout << "Value " << value << " not found in the tree." << endl;
-                            }
+                    value = numOperations;
+                    // Search for the value in the BST
+                    if (bst.search(value)) {
+                        cout << "Value " << value << " found in the tree." << endl;
+                        operationAmounts[1]+=bst.getNumOperations();
+                    }
+                    else {
+                        cout << "Value " << value << " not found in the tree." << endl;
+                    }
                        
                     break;
 
@@ -160,6 +152,10 @@ int main() {
         }
     }
 
+    int creation = operationAmounts[0];
+    int search = operationAmounts[1];
+    int deletion = operationAmounts[2];
+    int insert = operationAmounts[3];
 
     // Print analysis data
     cout << "\n              BST";
@@ -181,10 +177,13 @@ int main() {
     outputFile << "\nTotal         " << (creation + search + insert + deletion);
 
 
+
     // Close the files
     inputFile.close();
     outputFile.close();
     operationFile.close();
+
+
 
     return 0;
 }
