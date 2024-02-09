@@ -80,6 +80,12 @@ int main() {
         }
     }
 
+    if (bst.getRoot() != nullptr)
+    {
+        operationAmounts[0] += 1; // count for checking if tree is null if the first node needs to be entered
+    }
+    
+
     std::cout <<"\nCreation of BST complete "<< operationAmounts[0] << " operations completed" << endl;
     std::cout << "\n\n\n";
 
@@ -106,12 +112,12 @@ int main() {
                     value = numOperations;
                     // Insert value into BST
                     bst.insert(value);
-                    operationAmounts[3]+=bst.getNumOperations();
+                    operationAmounts[3]+=(bst.getNumOperations()+1);
                     // Print the BST to the console and the output file after each insertion
                     bst.printTree(outputFile);
                     bst.print2DConsole();
                     bst.print2DToFile(outputFile);
-                    std::cout << bst.getNumOperations() << " operations completed" << endl;
+                    std::cout << bst.getNumOperations()+1 << " operations completed" << endl;
 
                         
                     break;
@@ -123,12 +129,12 @@ int main() {
                     if (bst.search(value)) {
                         // Delete the value from the BST
                         bst.deleteNode(value);
-                        operationAmounts[2]+=bst.getNumOperations();
+                        operationAmounts[2]+=(bst.getNumOperations()+1);
                         // Print the BST to the console and the output file after each deletion
                         bst.printTree(outputFile);
                         bst.print2DConsole();
                         bst.print2DToFile(outputFile);
-                        std::cout << bst.getNumOperations() << " operations completed" << endl;
+                        std::cout << bst.getNumOperations()+1 << " operations completed" << endl;
                     }
                     else {
                         std::cout << "Value " << value << " not found in the tree - skipping deletion." << endl;
@@ -142,8 +148,8 @@ int main() {
                     // Search for the value in the BST
                     if (bst.search(value)) {
                         std::cout << "Value " << value << " found in the tree." << endl;
-                        std::cout << bst.getNumOperations() << " operations completed" << endl;
-                        operationAmounts[1]+=bst.getNumOperations();
+                        std::cout << bst.getNumOperations()+1 << " operations completed" << endl;
+                        operationAmounts[1]+=(bst.getNumOperations()+1);
                     }
                     else {
                         std::cout << "Value " << value << " not found in the tree." << endl;

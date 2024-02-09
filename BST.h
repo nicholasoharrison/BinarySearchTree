@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const int COUNT = 5; // For 2D tree printing and spacing
+const int COUNT = 5; // For 2D tree printing spacing
 
 struct Node {
     int data;
@@ -35,6 +35,8 @@ private:
 
 public:
     BST() : root(nullptr) { operations = 0; } //Constructor sets the root node to null
+
+    Node* getRoot() { return root; }
 
     int getNumOperations() { return operations; }
 
