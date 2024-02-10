@@ -1,0 +1,14 @@
+BST elements: 1 , Tree Height: 1
+Printing BST using 2D representation:
+
+1
+BST elements: , Tree Height: 0
+Printing BST using 2D representation:
+
+              BST
+Creation      0
+Search        2
+Insert        2
+Delete        2
+         -------------
+Total         6

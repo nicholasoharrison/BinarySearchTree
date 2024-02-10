@@ -1,0 +1,24 @@
+BST elements: 4 , Tree Height: 1
+Printing BST using 2D representation:
+
+4
+BST elements: 4 4 , Tree Height: 1
+Printing BST using 2D representation:
+
+4-2
+BST elements: 4 4 4 , Tree Height: 1
+Printing BST using 2D representation:
+
+4-3
+BST elements: 4 4 4 4 , Tree Height: 1
+Printing BST using 2D representation:
+
+4-4
+
+              BST
+Creation      0
+Search        0
+Insert        8
+Delete        0
+         -------------
+Total         8
