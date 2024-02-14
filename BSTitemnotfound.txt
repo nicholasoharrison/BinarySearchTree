@@ -26,11 +26,15 @@ Printing BST using 2D representation:
           2
 
 1
+Value 4 not found in the tree - skipping deletion.
+Value 5 not found in the tree.
+Value 7 not found in the tree - skipping deletion.
+Value 8 not found in the tree.
 
               BST
 Creation      10
-Search        0
+Search        8
 Insert        0
-Delete        0
+Delete        8
          -------------
-Total         10
+Total         26

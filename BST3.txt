@@ -60,11 +60,12 @@ Printing BST using 2D representation:
 3
 BST elements: , Tree Height: 0
 Printing BST using 2D representation:
+Value 3 not found in the tree - skipping deletion.
 
               BST
 Creation      9
 Search        0
 Insert        0
-Delete        16
+Delete        33
          -------------
-Total         25
+Total         42

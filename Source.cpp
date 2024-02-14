@@ -121,7 +121,7 @@ int main() {
                     bst.print2DConsole();
                     bst.print2DToFile(outputFile);
                     std::cout << bst.getNumOperations()+1 << " operations completed" << endl;
-
+                    outputFile << bst.getNumOperations() + 1 << " operations completed" << endl;
                         
                     break;
 
@@ -131,6 +131,7 @@ int main() {
                     // Check if the value is in the tree before attempting deletion
                     if (bst.search(value)) {
                         // Delete the value from the BST
+                        operationAmounts[2] += (bst.getNumOperations() + 1);
                         bst.deleteNode(value);
                         operationAmounts[2]+=(bst.getNumOperations()+1);
                         // Print the BST to the console and the output file after each deletion
@@ -141,6 +142,8 @@ int main() {
                     }
                     else {
                         std::cout << "Value " << value << " not found in the tree - skipping deletion." << endl;
+                        outputFile << "Value " << value << " not found in the tree - skipping deletion." << endl;
+                        operationAmounts[2] += (bst.getNumOperations() + 1); // Accounts for the search even if the value is not found
                     }
                         
                     break;
@@ -156,6 +159,8 @@ int main() {
                     }
                     else {
                         std::cout << "Value " << value << " not found in the tree." << endl;
+                        outputFile << "Value " << value << " not found in the tree." << endl;
+                        operationAmounts[1] += (bst.getNumOperations() + 1);  // Accounts for the search even if the value is not found
                     }
                        
                     break;

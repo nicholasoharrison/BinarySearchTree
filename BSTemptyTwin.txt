@@ -1,19 +1,25 @@
+
+Tree is empty after creation.
 BST elements: 4 , Tree Height: 1
 Printing BST using 2D representation:
 
 4
+2 operations completed
 BST elements: 4 4 , Tree Height: 1
 Printing BST using 2D representation:
 
 4-2
+2 operations completed
 BST elements: 4 4 4 , Tree Height: 1
 Printing BST using 2D representation:
 
 4-3
+2 operations completed
 BST elements: 4 4 4 4 , Tree Height: 1
 Printing BST using 2D representation:
 
 4-4
+2 operations completed
 
               BST
 Creation      0

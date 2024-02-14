@@ -16,6 +16,7 @@ Printing BST using 2D representation:
           777777777
 
      67
+4 operations completed
 
               BST
 Creation      4

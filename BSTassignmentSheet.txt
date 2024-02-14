@@ -1268,6 +1268,7 @@ Printing BST using 2D representation:
           2
 
                1
+8 operations completed
 BST elements: 1 2 3 4 5 6 7 8 9 10 10 11 12 13 14 15 16 17 17 18 19 20 21 23 24 25 26 26 26 27 28 28 29 30 , Tree Height: 8
 Printing BST using 2D representation:
 
@@ -1508,6 +1509,8 @@ Printing BST using 2D representation:
           2
 
                1
+8 operations completed
+Value 33 not found in the tree - skipping deletion.
 BST elements: 1 2 3 4 5 6 7 8 9 10 10 11 12 13 14 15 15 17 18 19 20 21 23 24 25 26 26 26 27 28 29 30 , Tree Height: 8
 Printing BST using 2D representation:
 
@@ -1624,6 +1627,7 @@ Printing BST using 2D representation:
           2
 
                1
+7 operations completed
 BST elements: 1 2 3 4 5 6 7 8 9 10 10 11 12 13 14 15 15 17 17 18 19 20 21 23 24 26 26 26 27 28 29 30 , Tree Height: 8
 Printing BST using 2D representation:
 
@@ -1682,6 +1686,7 @@ Printing BST using 2D representation:
           2
 
                1
+Value 16 not found in the tree - skipping deletion.
 BST elements: 1 2 3 4 5 6 7 8 9 10 10 11 12 13 14 15 15 17 17 18 19 20 21 23 24 26 26 26 27 28 29 30 33 , Tree Height: 8
 Printing BST using 2D representation:
 
@@ -1742,6 +1747,7 @@ Printing BST using 2D representation:
           2
 
                1
+7 operations completed
 BST elements: 1 2 3 4 5 6 7 8 9 10 10 11 12 13 14 15 15 17 17 18 19 20 21 23 24 26 26 27 28 29 30 33 , Tree Height: 8
 Printing BST using 2D representation:
 
@@ -1802,6 +1808,7 @@ Printing BST using 2D representation:
           2
 
                1
+Value 16 not found in the tree.
 BST elements: 1 2 3 4 5 6 7 8 9 10 10 11 12 13 14 15 15 17 17 18 19 20 21 23 24 26 27 28 29 30 33 , Tree Height: 8
 Printing BST using 2D representation:
 
@@ -1916,6 +1923,8 @@ Printing BST using 2D representation:
           2
 
                1
+Value 28 not found in the tree.
+Value 22 not found in the tree.
 BST elements: 1 2 3 4 5 6 7 8 9 10 10 11 12 13 14 15 15 17 17 18 19 20 21 23 24 27 29 30 33 , Tree Height: 8
 Printing BST using 2D representation:
 
@@ -1973,8 +1982,8 @@ Printing BST using 2D representation:
 
               BST
 Creation      166
-Search        64
+Search        86
 Insert        30
-Delete        60
+Delete        125
          -------------
-Total         320
+Total         407
