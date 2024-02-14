@@ -1,3 +1,5 @@
+
+Tree is empty after creation.
 BST elements: 3 , Tree Height: 1
 Printing BST using 2D representation:
 

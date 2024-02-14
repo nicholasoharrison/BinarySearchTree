@@ -80,9 +80,12 @@ int main() {
         }
     }
 
-    if (bst.getRoot() != nullptr)
-    {
+    if (bst.getRoot() != nullptr){
         operationAmounts[0] += 1; // count for checking if tree is null if the first node needs to be entered
+    }
+    else{
+        outputFile << "\nTree is empty after creation.\n";
+        std::cout << "\nTree is empty after creation.\n";
     }
     
 
