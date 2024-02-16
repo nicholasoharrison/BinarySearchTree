@@ -16,12 +16,12 @@ Printing BST using 2D representation:
           777777777
 
      67
-4 operations completed
+5 operations completed
 
               BST
-Creation      4
+Creation      6
 Search        3
-Insert        4
+Insert        5
 Delete        0
          -------------
-Total         11
+Total         14

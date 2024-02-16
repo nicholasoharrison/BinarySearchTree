@@ -63,9 +63,9 @@ Printing BST using 2D representation:
 Value 3 not found in the tree - skipping deletion.
 
               BST
-Creation      9
+Creation      23
 Search        0
 Insert        0
-Delete        33
+Delete        42
          -------------
-Total         42
+Total         65

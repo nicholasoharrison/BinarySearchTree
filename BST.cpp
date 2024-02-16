@@ -78,6 +78,7 @@
                 // Subtract one from the twin chain
                 Node* temp = current->next;
                 current->next = temp->next;
+                operations++;
                 delete temp;
             }
             else {
@@ -85,11 +86,13 @@
                 if (current->left == nullptr) {
                     Node* temp = current->right;
                     delete current;
+                    operations += 2;
                     return temp;
                 }
                 else if (current->right == nullptr) {
                     Node* temp = current->left;
                     delete current;
+                    operations += 2;
                     return temp;
                 }
 
@@ -98,6 +101,7 @@
 
                 // Copy the inorder successor's data to this node
                 current->data = temp->data;
+                operations++;
 
                 // Delete the inorder successor
                 current->right = deleteNodeRecursive(current->right, temp->data);
@@ -112,7 +116,9 @@
     // Inserts a new node into the BST
     void BST::insert(int value) {
         operations = 0;
+        if (root == nullptr) { operations--; }
         root = insertRecursive(root, value);
+        operations++; // Add an operation for the inserting of the node
         std::cout << "Inserted value: " << value << ", Tree Height: " << height(root) << endl;
     }
 
@@ -123,6 +129,7 @@
         Node* current = node;
         while (current && current->left != nullptr) {
             current = current->left;
+            operations++; // Number of operations to find the smallest value in the subtree
         }
         return current;
     }

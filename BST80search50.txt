@@ -150,7 +150,7 @@ Printing BST using 2D representation:
                          10
 
                     9
-5 operations completed
+6 operations completed
 BST elements: 9 10 15 15 20 34 43 51 64 72 81 84 , Tree Height: 6
 Printing BST using 2D representation:
 
@@ -175,12 +175,12 @@ Printing BST using 2D representation:
                          10
 
                     9
-6 operations completed
+7 operations completed
 
               BST
-Creation      36
+Creation      54
 Search        17
-Insert        11
+Insert        13
 Delete        0
          -------------
-Total         64
+Total         84

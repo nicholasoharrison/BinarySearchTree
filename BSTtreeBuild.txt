@@ -750,9 +750,9 @@ Printing BST using 2D representation:
                          5
 
               BST
-Creation      127
+Creation      179
 Search        153
 Insert        0
 Delete        0
          -------------
-Total         280
+Total         332

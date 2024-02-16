@@ -69,7 +69,7 @@ int main() {
             // Convert the string to an integer and insert into the BST
             value = stoi(line);
             bst.insert(value);
-            operationAmounts[0] += bst.getNumOperations();
+            operationAmounts[0] += bst.getNumOperations()+1;
             // Print the BST to the console and the output file after each insertion
             bst.printTree(outputFile);
             bst.print2DConsole();
@@ -81,7 +81,6 @@ int main() {
     }
 
     if (bst.getRoot() != nullptr){
-        operationAmounts[0] += 1; // count for checking if tree is null if the first node needs to be entered
     }
     else{
         outputFile << "\nTree is empty after creation.\n";

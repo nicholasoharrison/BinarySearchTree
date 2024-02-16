@@ -28,9 +28,9 @@ Printing BST using 2D representation:
 4
 
               BST
-Creation      11
+Creation      17
 Search        0
 Insert        0
 Delete        0
          -------------
-Total         11
+Total         17
